@@ -55,10 +55,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="card">
-                                    <div class="card-header fs-1">Data User</div>
-                                    <div class="btn-cta d-flex justify-content-end me-4">
-                                        <button class="btn btn-secondary">Add User</button>
-                                    </div>
+                                    <div class="card-header">Data User</div>
                                     <div class="card-body">
                                         <table class="table table-bordered">
                                             <thead>
