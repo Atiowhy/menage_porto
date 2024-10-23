@@ -1,3 +1,10 @@
+<?php
+include 'connection.php';
+$id = $_SESSION['id'];
+$queryUser = mysqli_query($connection, "SELECT * FROM user WHERE id = '$id'");
+$rowUser = mysqli_fetch_assoc(($queryUser));
+?>
+
 <nav
     class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
     id="layout-navbar">
@@ -37,7 +44,7 @@
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                        <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                        <img src="upload/<?php echo $rowUser['foto']  ?>" alt class="w-px-40 h-auto rounded-circle" />
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -50,7 +57,9 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-semibold d-block">Atio</span>
+                                    <span class="fw-semibold d-block">
+                                        <?php echo isset($_SESSION['nama']) ? $_SESSION['nama'] : '' ?>
+                                    </span>
                                     <small class="text-muted">Admin</small>
                                 </div>
                             </div>
@@ -84,7 +93,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="auth-login-basic.html">
+                        <a class="dropdown-item" href="logout.php">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Log Out</span>
                         </a>

@@ -1,17 +1,9 @@
+<?php
+session_start();
+include "../controller/action_user.php"
+?>
+
 <!DOCTYPE html>
-
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
-
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
-
-=========================================================
- -->
-<!-- beautify ignore:start -->
 <html
     lang="en"
     class="light-style layout-menu-fixed"
@@ -57,35 +49,46 @@
                                 <div class="card">
                                     <div class="card-header fs-1">Data User</div>
                                     <div class="btn-cta d-flex justify-content-end me-4">
-                                        <button class="btn btn-secondary">Add User</button>
+                                        <a href="add-user.php" class="btn btn-info">Add User</a>
                                     </div>
                                     <div class="card-body">
+                                        <?php if (isset($_GET['success-delete'])): ?>
+                                            <div id="alert" class="alert alert-success" role="alert">Deleted Success</div>
+                                        <?php endif; ?>
                                         <table class="table table-bordered">
                                             <thead>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Nama</th>
-                                                    <th>Email</th>
-                                                    <th>Aksi</th>
+                                                <tr class="bg-primary ">
+                                                    <th class="text-white">No</th>
+                                                    <th class="text-white">Nama</th>
+                                                    <th class="text-white">Email</th>
+                                                    <th class="text-white">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <td>1</td>
-                                                <td>Atio Wahyudi Saputra</td>
-                                                <td>atio@gmail.com</td>
-                                                <td>
-                                                    <div class="btn-cta">
-                                                        <button class="btn btn-primary">Edit</button>
-                                                        <button class="btn btn-danger">Delete</button>
-                                                    </div>
-                                                </td>
+                                                <?php
+                                                $no = 1;
+                                                while ($rowDataUser = mysqli_fetch_assoc($queryDataUser)) :
+                                                ?>
+                                                    <tr>
+                                                        <td><?php echo  $no++; ?></td>
+                                                        <td><?php echo  $rowDataUser['nama'] ?></td>
+                                                        <td><?php echo  $rowDataUser['email'] ?></td>
+                                                        <td>
+
+                                                            <a href="../admin/add-user.php?edit=<?php echo $rowDataUser['id'] ?>" class="btn btn-warning btn-sm"><span class="tf-icon bx bx-pencil me-2">Edit</span></a>
+                                                            <a href="../controller/action_user.php?delete=<?php echo $rowDataUser['id'] ?>" class="btn btn-danger btn-sm"><span class="tf-icon bx bx-trash me-2" onclick="return confirm('Are you sure want to delete this item?')">Delete</span></a>
+
+                                                        </td>
+                                                    </tr>
+                                                <?php endwhile; ?>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- / Content -->
+
+
                     </div>
                     <!-- Footer -->
                     <?php include 'inc/footer.php' ?>

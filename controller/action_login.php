@@ -11,6 +11,8 @@ if (isset($_POST['login'])) {
     if (mysqli_num_rows($queryLogin) > 0) {
         $rowUserLogin = mysqli_fetch_assoc($queryLogin);
         if ($password == $rowUserLogin['password']) {
+            $_SESSION['nama'] = $rowUserLogin['nama'];
+            $_SESSION['id'] = $rowUserLogin['id'];
             header('location: ../admin/index.php?success=login-success');
         } else {
             header('location: ../admin/login.php?error=password-doesnt-match');

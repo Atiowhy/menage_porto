@@ -1,3 +1,6 @@
+<?php session_start();
+include '../admin/connection.php';
+?>
 <!DOCTYPE html>
 
 <!-- =========================================================
