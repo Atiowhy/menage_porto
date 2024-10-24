@@ -11,7 +11,7 @@ if (!$queryDataUser) {
 if (isset($_POST['add-user'])) {
     $nama = $_POST['nama'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = sha1($_POST['password']);
 
     // $_FILES => ngambil nilai dari input type file
     if (isset($_FILES['foto']['name'])) {
