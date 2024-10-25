@@ -1,3 +1,8 @@
+ <?php
+    include 'admin/connection.php';
+
+    $queryInstrukturLimit = mysqli_query($connection, "SELECT * FROM instruktur ORDER BY id DESC LIMIT 4");
+    ?>
  <!DOCTYPE html>
  <html lang="en">
 
@@ -30,7 +35,7 @@
      <div class="container-fluid p-0 mb-5">
          <div class="owl-carousel header-carousel position-relative">
              <div class="owl-carousel-item position-relative">
-                 <img class="img-fluid" src="img/carousel-1.jpg" alt="">
+                 <img class="img-fluid" src="assets/front/img/carousel-1.jpg" alt="">
                  <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
                      <div class="container">
                          <div class="row justify-content-start">
@@ -46,7 +51,7 @@
                  </div>
              </div>
              <div class="owl-carousel-item position-relative">
-                 <img class="img-fluid" src="img/carousel-2.jpg" alt="">
+                 <img class="img-fluid" src="assets/front/img/carousel-2.jpg" alt="">
                  <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
                      <div class="container">
                          <div class="row justify-content-start">
@@ -118,7 +123,7 @@
              <div class="row g-5">
                  <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
                      <div class="position-relative h-100">
-                         <img class="img-fluid position-absolute w-100 h-100" src="img/about.jpg" alt="" style="object-fit: cover;">
+                         <img class="img-fluid position-absolute w-100 h-100" src="assets/front/img/about.jpg" alt="" style="object-fit: cover;">
                      </div>
                  </div>
                  <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
@@ -314,78 +319,26 @@
                  <h1 class="mb-5">Expert Instructors</h1>
              </div>
              <div class="row g-4">
-                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                     <div class="team-item bg-light">
-                         <div class="overflow-hidden">
-                             <img class="img-fluid" src="img/team-1.jpg" alt="">
-                         </div>
-                         <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                             <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                 <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                 <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                 <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                 <?php while ($dataInstruktur = mysqli_fetch_assoc($queryInstrukturLimit)) : ?>
+                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                         <div class="team-item bg-light">
+                             <div class="overflow-hidden">
+                                 <img class="img-fluid w-100" src="admin/upload/<?php echo $dataInstruktur['foto'] ?>" alt="">
+                             </div>
+                             <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                                 <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                     <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                     <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                     <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                                 </div>
+                             </div>
+                             <div class="text-center p-4">
+                                 <h5 class="mb-0"><?php echo $dataInstruktur['nama_instruktur'] ?></h5>
+                                 <small><?php echo $dataInstruktur['bidang'] ?></small>
                              </div>
                          </div>
-                         <div class="text-center p-4">
-                             <h5 class="mb-0">Instructor Name</h5>
-                             <small>Designation</small>
-                         </div>
                      </div>
-                 </div>
-                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                     <div class="team-item bg-light">
-                         <div class="overflow-hidden">
-                             <img class="img-fluid" src="img/team-2.jpg" alt="">
-                         </div>
-                         <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                             <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                 <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                 <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                 <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                             </div>
-                         </div>
-                         <div class="text-center p-4">
-                             <h5 class="mb-0">Instructor Name</h5>
-                             <small>Designation</small>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                     <div class="team-item bg-light">
-                         <div class="overflow-hidden">
-                             <img class="img-fluid" src="img/team-3.jpg" alt="">
-                         </div>
-                         <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                             <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                 <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                 <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                 <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                             </div>
-                         </div>
-                         <div class="text-center p-4">
-                             <h5 class="mb-0">Instructor Name</h5>
-                             <small>Designation</small>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                     <div class="team-item bg-light">
-                         <div class="overflow-hidden">
-                             <img class="img-fluid" src="img/team-4.jpg" alt="">
-                         </div>
-                         <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                             <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                 <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                 <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                 <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                             </div>
-                         </div>
-                         <div class="text-center p-4">
-                             <h5 class="mb-0">Instructor Name</h5>
-                             <small>Designation</small>
-                         </div>
-                     </div>
-                 </div>
+                 <?php endwhile ?>
              </div>
          </div>
      </div>
