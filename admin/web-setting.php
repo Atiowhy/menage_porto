@@ -84,6 +84,7 @@ include "../controller/action-setting.php";
                                                 <div class="col-sm-12">
                                                     <label for="" class="form-label">Image</label>
                                                     <input type="file" class="form-control" name="foto">
+                                                    <img src="upload/<?php echo isset($rowSetting['logo']) ? $rowSetting['logo'] : '' ?>" alt="gambar" class="rounded w-50 mt-2 ">
                                                 </div>
                                             </div>
                                             <div class="mb-3 row">

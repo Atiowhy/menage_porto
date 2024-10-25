@@ -32,6 +32,8 @@ if (isset($_POST['save'])) {
                 $upload = "../admin/upload/";
                 // pindahkan gambar dari tmp folder ke folder yg kita buat
                 move_uploaded_file($_FILES['foto']['tmp_name'], $upload . $nameFile);
+                // unlink() => fungsinya untuk mendelete file
+                unlink($upload . $rowSetting['logo']);
 
                 $queryUpdateSetting = mysqli_query($connection, "UPDATE general_setting SET website_name = '$website_name', website_link = '$website_link', website_phone = '$website_phone', website_email =  '$website_email', website_address = '$website_address', logo = '$nameFile' WHERE id = '$id' ");
             }
