@@ -6,11 +6,13 @@ if (isset($_POST['login'])) {
     $email      = $_POST['email'];
     $password   = sha1($_POST['password']);
 
+
+
     $queryLogin = mysqli_query($connection, "SELECT * FROM user WHERE email='$email'");
 
     if (mysqli_num_rows($queryLogin) > 0) {
         $rowUserLogin = mysqli_fetch_assoc($queryLogin);
-        if ($password == $rowUserLogin['password']) {
+        if ($password == $rowUserLogin['password'] ) {
             $_SESSION['nama'] = $rowUserLogin['nama'];
             $_SESSION['id'] = $rowUserLogin['id'];
             header('location: ../admin/index.php?success=login-success');

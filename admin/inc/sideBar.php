@@ -50,7 +50,7 @@
                     </g>
                 </svg>
             </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">Admin</span>
+            <span class="app-brand-text demo menu-text fw-bolder ms-2"><?php echo $_SESSION['nama'] ?></span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -117,6 +117,11 @@
                 <li class="menu-item">
                     <a href="user.php" class="menu-link">
                         <div data-i18n="Account">Data User</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="contact-admin.php" class="menu-link">
+                        <div data-i18n="Account">Contact</div>
                     </a>
                 </li>
             </ul>
